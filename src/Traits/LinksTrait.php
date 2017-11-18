@@ -37,13 +37,8 @@ trait LinksTrait
      */
     public function addLink($key, $data)
     {
-        if (is_array($this->links[$key]) && is_array($data)) {
-
-            if (empty($this->links[$key])) {
-                $this->links[$key] = [];
-            }
-
-            $this->links[$key] = array_merge_recursive($this->links[$key], $data);
+        if (!empty($this->links[$key]) && is_array($this->links[$key]) && is_array($data)) {
+            $this->links[$key] = array_merge($this->links[$key], $data);
         } else {
             $this->links[$key] = $data;
         }

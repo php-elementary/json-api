@@ -37,12 +37,7 @@ trait MetaTrait
      */
     public function addMeta($key, $data)
     {
-        if (is_array($this->meta[$key]) && is_array($data)) {
-
-            if (empty($this->meta[$key])) {
-                $this->meta[$key] = [];
-            }
-
+        if (!empty($this->meta[$key]) && is_array($this->meta[$key]) && is_array($data)) {
             $this->meta[$key] = array_merge_recursive($this->meta[$key], $data);
         } else {
             $this->meta[$key] = $data;

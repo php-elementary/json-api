@@ -42,10 +42,10 @@ trait IncludedTrait
     public function addInclude($key, array $data)
     {
         if (empty($this->included[$key])) {
-            $this->included[$key] = [];
+            $this->included[$key] = $data;
+        } else {
+            $this->included[$key] = array_merge($this->included[$key], $data);
         }
-
-        $this->included[$key] = array_merge_recursive($this->included[$key], $data);
 
         return $this;
     }
